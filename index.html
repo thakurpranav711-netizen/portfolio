@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranav Thakur | AI Engineer & Researcher</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Neural Network Background -->
+    <canvas id="neuralCanvas"></canvas>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-content">
+            <div class="ai-brain">
+                <div class="brain-ring ring1"></div>
+                <div class="brain-ring ring2"></div>
+                <div class="brain-ring ring3"></div>
+                <div class="brain-core"></div>
+            </div>
+            <div class="loading-text">
+                <span class="load-bracket">[</span>
+                <span id="loadingPercent">0</span>%
+                <span class="load-bracket">]</span>
+            </div>
+            <p class="loading-subtitle">Initializing Neural Networks...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">PT</span>
+                <span class="logo-bracket">/&gt;</span>
+                <span class="logo-dot"></span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#home" class="nav-link active" data-text="Home">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link" data-text="About">About</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link" data-text="Skills">Skills</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link" data-text="Projects">Projects</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link" data-text="Experience">Experience</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link" data-text="Contact">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge animate-on-scroll">
+                <span class="badge-dot"></span>
+                <span>Available for opportunities</span>
+            </div>
+            <h1 class="hero-title animate-on-scroll">
+                <span class="title-line">
+                    <span class="title-word">Hi, I'm</span>
+                </span>
+                <span class="title-line name-line">
+                    <span class="title-word gradient-text" id="heroName">Pranav Thakur</span>
+                </span>
+                <span class="title-line">
+                    <span class="title-word">I Build</span>
+                    <span class="title-word rotating-text-wrapper">
+                        <span class="rotating-text" id="rotatingText"></span>
+                        <span class="text-cursor">|</span>
+                    </span>
+                </span>
+            </h1>
+            <p class="hero-description animate-on-scroll">
+                AI Engineer & Researcher specializing in Deep Learning, Natural Language Processing,
+                and Computer Vision. Transforming complex data into intelligent solutions that shape the future.
+            </p>
+            <div class="hero-cta animate-on-scroll">
+                <a href="#projects" class="btn btn-primary">
+                    <span>View My Work</span>
+                    <i class="fas fa-arrow-right"></i>
+                    <div class="btn-glow"></div>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <span>Let's Talk</span>
+                    <i class="fas fa-paper-plane"></i>
+                </a>
+            </div>
+            <div class="hero-stats animate-on-scroll">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="25">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">AI Projects</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="15">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Research Papers</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-3d-container" id="hero3D">
+                <div class="hologram-container">
+                    <div class="hologram-ring ring-outer"></div>
+                    <div class="hologram-ring ring-middle"></div>
+                    <div class="hologram-ring ring-inner"></div>
+                    <div class="hologram-core">
+                        <div class="core-face front">AI</div>
+                        <div class="core-face back">ML</div>
+                        <div class="core-face left">DL</div>
+                        <div class="core-face right">NLP</div>
+                        <div class="core-face top">CV</div>
+                        <div class="core-face bottom">GEN</div>
+                    </div>
+                    <div class="hologram-particles"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">&lt;about&gt;</span>
+                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-image animate-on-scroll">
+                    <div class="image-wrapper">
+                        <div class="image-frame">
+                            <div class="frame-corner top-left"></div>
+                            <div class="frame-corner top-right"></div>
+                            <div class="frame-corner bottom-left"></div>
+                            <div class="frame-corner bottom-right"></div>
+                            <div class="profile-placeholder">
+                                <div class="placeholder-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="placeholder-rings">
+                                    <div class="p-ring"></div>
+                                    <div class="p-ring"></div>
+                                    <div class="p-ring"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-decoration">
+                            <div class="deco-line"></div>
+                            <div class="deco-dot"></div>
+                        </div>
+                    </div>
+                    <div class="floating-card card-1">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Expert</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-code"></i>
+                        <span>ML Engineer</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Researcher</span>
+                    </div>
+                </div>
+                <div class="about-content animate-on-scroll">
+                    <h3 class="about-subtitle">
+                        AI Engineer & Researcher based in India
+                        <span class="wave-emoji">🇮🇳</span>
+                    </h3>
+                    <p class="about-text">
+                        I'm <strong>Pranav Thakur</strong>, a passionate AI Engineer with a deep fascination
+                        for artificial intelligence and its potential to revolutionize the world. With expertise
+                        spanning machine learning, deep learning, natural language processing, and computer vision,
+                        I develop cutting-edge AI solutions that push boundaries.
+                    </p>
+                    <p class="about-text">
+                        My journey in AI began with a curiosity about how machines can learn and think.
+                        Today, I work on building intelligent systems — from large language models and
+                        generative AI to autonomous systems and predictive analytics — that make a real
+                        impact on industries and lives.
+                    </p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <span class="detail-icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span class="detail-text">India</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon"><i class="fas fa-envelope"></i></span>
+                            <span class="detail-text">pranav@ai-engineer.dev</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon"><i class="fas fa-briefcase"></i></span>
+                            <span class="detail-text">Open to opportunities</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon"><i class="fas fa-language"></i></span>
+                            <span class="detail-text">English, Hindi</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary download-cv">
+                        <span>Download CV</span>
+                        <i class="fas fa-download"></i>
+                        <div class="btn-glow"></div>
+                    </a>
+                </div>
+            </div>
+            <span class="section-tag closing-tag">&lt;/about&gt;</span>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">&lt;skills&gt;</span>
+                <h2 class="section-title">Tech <span class="gradient-text">Arsenal</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="skills-categories">
+                <!-- AI/ML Skills -->
+                <div class="skill-category animate-on-scroll">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI & Machine Learning</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item" data-level="95">
+                            <div class="skill-info">
+                                <span class="skill-name">TensorFlow / Keras</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="92">
+                            <div class="skill-info">
+                                <span class="skill-name">PyTorch</span>
+                                <span class="skill-percent">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="90">
+                            <div class="skill-info">
+                                <span class="skill-name">Scikit-Learn</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <div class="skill-info">
+                                <span class="skill-name">Hugging Face Transformers</span>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <div class="skill-info">
+                                <span class="skill-name">LangChain / LLMs</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programming -->
+                <div class="skill-category animate-on-scroll">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item" data-level="96">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percent">96%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 96%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="80">
+                            <div class="skill-info">
+                                <span class="skill-name">C++</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="78">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percent">78%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="82">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-percent">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="75">
+                            <div class="skill-info">
+                                <span class="skill-name">R</span>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Platforms -->
+                <div class="skill-category animate-on-scroll">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Tools & Platforms</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-aws"></i> AWS</span>
+                        <span class="skill-tag"><i class="fab fa-google"></i> GCP</span>
+                        <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
+                        <span class="skill-tag"><i class="fas fa-cube"></i> Kubernetes</span>
+                        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i> MongoDB</span>
+                        <span class="skill-tag"><i class="fas fa-server"></i> MLflow</span>
+                        <span class="skill-tag"><i class="fas fa-chart-line"></i> Weights & Biases</span>
+                        <span class="skill-tag"><i class="fas fa-project-diagram"></i> Apache Spark</span>
+                        <span class="skill-tag"><i class="fas fa-robot"></i> OpenAI API</span>
+                        <span class="skill-tag"><i class="fas fa-eye"></i> OpenCV</span>
+                        <span class="skill-tag"><i class="fas fa-chart-bar"></i> Tableau</span>
+                        <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="skill-tag"><i class="fas fa-microchip"></i> CUDA</span>
+                        <span class="skill-tag"><i class="fas fa-layer-group"></i> FastAPI</span>
+                        <span class="skill-tag"><i class="fas fa-flask"></i> Flask</span>
+                    </div>
+                </div>
+            </div>
+            <span class="section-tag closing-tag">&lt;/skills&gt;</span>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">&lt;projects&gt;</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="projects-filter animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="nlp">NLP</button>
+                <button class="filter-btn" data-filter="cv">Computer Vision</button>
+                <button class="filter-btn" data-filter="genai">Generative AI</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card animate-on-scroll" data-category="genai">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-comments"></i>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">LLM</span>
+                            <span class="tag">RAG</span>
+                            <span class="tag">LangChain</span>
+                        </div>
+                        <h3 class="project-title">AI Knowledge Assistant</h3>
+                        <p class="project-desc">Built a RAG-powered AI assistant using LangChain and GPT-4 that can answer questions from custom document collections with 94% accuracy.</p>
+                        <div class="project-metrics">
+                            <span><i class="fas fa-star"></i> 94% Accuracy</span>
+                            <span><i class="fas fa-bolt"></i> Real-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card animate-on-scroll" data-category="cv">
+                    <div class="project-image">
+                        <div class="project-placeholder cv-placeholder">
+                            <i class="fas fa-eye"></i>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">YOLO</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                        <h3 class="project-title">Real-time Object Detection</h3>
+                        <p class="project-desc">Developed a real-time object detection system using YOLOv8 for autonomous vehicle applications with 97% mAP on custom dataset.</p>
+                        <div class="project-metrics">
+                            <span><i class="fas fa-star"></i> 97% mAP</span>
+                            <span><i class="fas fa-bolt"></i> 60 FPS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card animate-on-scroll" data-category="nlp">
+                    <div class="project-image">
+                        <div class="project-placeholder nlp-placeholder">
+                            <i class="fas fa-language"></i>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">BERT</span>
+                            <span class="tag">Transformers</span>
+                            <span class="tag">NLP</span>
+                        </div>
+                        <h3 class="project-title">Sentiment Analysis Engine</h3>
+                        <p class="project-desc">Fine-tuned BERT model for multi-language sentiment analysis processing 10K+ reviews per minute with state-of-the-art F1 score.</p>
+                        <div class="project-metrics">
+                            <span><i class="fas fa-star"></i> 0.96 F1</span>
+                            <span><i class="fas fa-bolt"></i> 10K/min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card animate-on-scroll" data-category="genai">
+                    <div class="project-image">
+                        <div class="project-placeholder genai-placeholder">
+                            <i class="fas fa-paint-brush"></i>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Stable Diffusion</span>
+                            <span class="tag">GANs</span>
+                            <span class="tag">GenAI</span>
+                        </div>
+                        <h3 class="project-title">AI Art Generator</h3>
+                        <p class="project-desc">Created a custom fine-tuned Stable Diffusion model for generating photorealistic images from text prompts with style control.</p>
+                        <div class="project-metrics">
+                            <span><i class="fas fa-star"></i> 50K+ Generated</span>
+                            <span><i class="fas fa-bolt"></i> 2s/image</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card animate-on-scroll" data-category="ml">
+                    <div class="project-image">
+                        <div class="project-placeholder ml-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">XGBoost</span>
+                            <span class="tag">Time Series</span>
+                            <span class="tag">MLOps</span>
+                        </div>
+                        <h3 class="project-title">Predictive Analytics Platform</h3>
+                        <p class="project-desc">End-to-end ML pipeline for financial market prediction using ensemble methods, deployed with MLflow and Docker on AWS.</p>
+                        <div class="project-metrics">
+                            <span><i class="fas fa-star"></i> 89% Accuracy</span>
+                            <span><i class="fas fa-bolt"></i> Auto-scaled</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card animate-on-scroll" data-category="cv">
+                    <div class="project-image">
+                        <div class="project-placeholder cv2-placeholder">
+                            <i class="fas fa-heartbeat"></i>
+                            <div class="project-overlay">
+                                <div class="overlay-content">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Medical AI</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">Transfer Learning</span>
+                        </div>
+                        <h3 class="project-title">Medical Image Diagnosis</h3>
+                        <p class="project-desc">Deep learning model for detecting diseases from X-ray and MRI scans using EfficientNet with attention mechanisms.</p>
+                        <div class="project-metrics">
+                            <span><i class="fas fa-star"></i> 98% Sensitivity</span>
+                            <span><i class="fas fa-bolt"></i> FDA Reviewed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="section-tag closing-tag">&lt;/projects&gt;</span>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">&lt;experience&gt;</span>
+                <h2 class="section-title">Career <span class="gradient-text">Journey</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item animate-on-scroll" data-side="left">
+                    <div class="timeline-dot">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Present</div>
+                        <h3 class="timeline-title">Senior AI Engineer</h3>
+                        <h4 class="timeline-company">TechCorp AI Labs</h4>
+                        <p class="timeline-desc">Leading the development of LLM-based applications and GenAI solutions. Managing a team of 8 engineers building next-gen AI products.</p>
+                        <div class="timeline-tags">
+                            <span>LLMs</span>
+                            <span>GenAI</span>
+                            <span>Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll" data-side="right">
+                    <div class="timeline-dot">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2023</div>
+                        <h3 class="timeline-title">ML Engineer</h3>
+                        <h4 class="timeline-company">DataVision Inc.</h4>
+                        <p class="timeline-desc">Developed computer vision solutions for retail analytics. Built and deployed ML models serving 1M+ predictions daily.</p>
+                        <div class="timeline-tags">
+                            <span>Computer Vision</span>
+                            <span>MLOps</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll" data-side="left">
+                    <div class="timeline-dot">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <h3 class="timeline-title">AI Research Intern</h3>
+                        <h4 class="timeline-company">IIT Research Lab</h4>
+                        <p class="timeline-desc">Conducted research on transformer architectures for NLP tasks. Published 3 papers in top-tier conferences.</p>
+                        <div class="timeline-tags">
+                            <span>Research</span>
+                            <span>NLP</span>
+                            <span>Transformers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll" data-side="right">
+                    <div class="timeline-dot">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2016 - 2020</div>
+                        <h3 class="timeline-title">B.Tech in Computer Science</h3>
+                        <h4 class="timeline-company">Top Engineering University</h4>
+                        <p class="timeline-desc">Specialized in AI & Machine Learning. Graduated with honors. Won multiple hackathons and coding competitions.</p>
+                        <div class="timeline-tags">
+                            <span>CS</span>
+                            <span>AI/ML</span>
+                            <span>Honors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="section-tag closing-tag">&lt;/experience&gt;</span>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">&lt;contact&gt;</span>
+                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Have a project in mind or want to collaborate? Let's talk!</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info animate-on-scroll">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p>pranav@ai-engineer.dev</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Location</h4>
+                            <p>India</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Availability</h4>
+                            <p>Open to opportunities</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" data-tooltip="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" data-tooltip="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" data-tooltip="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" data-tooltip="Kaggle">
+                            <i class="fab fa-kaggle"></i>
+                        </a>
+                        <a href="#" class="social-link" data-tooltip="Medium">
+                            <i class="fab fa-medium-m"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form animate-on-scroll" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            <span class="form-line"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            <span class="form-line"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Project Collaboration" required>
+                        <span class="form-line"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                        <span class="form-line"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+            </div>
+            <span class="section-tag closing-tag">&lt;/contact&gt;</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text">Pranav Thakur</span>
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-text">Crafting Intelligent Solutions with AI</p>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">
+                    &copy; <span id="currentYear"></span> Pranav Thakur. All Rights Reserved.
+                    <span class="footer-heart">Made with <i class="fas fa-heart"></i> & AI</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
